@@ -6,7 +6,7 @@
   <VisualBasic.Settings>
     <x:Null />
   </VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>1234.4,4440</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>1234.4,4456</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>Zone_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <scg:List x:TypeArguments="x:String" Capacity="30">
@@ -89,13 +89,13 @@
       <AssemblyReference>UiPath.System.Activities.Design</AssemblyReference>
     </scg:List>
   </TextExpression.ReferencesForImplementation>
-  <Sequence DisplayName="Zone" sap:VirtualizedContainerService.HintSize="726.4,4375.2" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence DisplayName="Zone" sap:VirtualizedContainerService.HintSize="726.4,4391.2" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <sap:WorkflowViewStateService.ViewState>
       <scg:Dictionary x:TypeArguments="x:String, x:Object">
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <Sequence sap2010:Annotation.AnnotationText="This sequence runs and gets the values from the data table that is passed through then it calls the workflow to perform the testing on the web app." DisplayName="Get values from data table and run UAT" sap:VirtualizedContainerService.HintSize="683.2,4284" sap2010:WorkflowViewState.IdRef="Sequence_2">
+    <Sequence sap2010:Annotation.AnnotationText="This sequence runs and gets the values from the data table that is passed through then it calls the workflow to perform the testing on the web app." DisplayName="Get values from data table and run UAT" sap:VirtualizedContainerService.HintSize="683.2,4300" sap2010:WorkflowViewState.IdRef="Sequence_2">
       <Sequence.Variables>
         <Variable x:TypeArguments="x:String" Name="Name" />
         <Variable x:TypeArguments="x:String" Name="Id" />
@@ -112,7 +112,7 @@
           <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
-      <ui:IfElseIf sap2010:Annotation.AnnotationText="Checks the condition coming in to see if the data table is for zone or category or device." DisplayName="Else If" sap:VirtualizedContainerService.HintSize="620.8,4116.8" sap2010:WorkflowViewState.IdRef="IfElseIf_1">
+      <ui:IfElseIf sap2010:Annotation.AnnotationText="Checks the condition coming in to see if the data table is for zone or category or device." DisplayName="Else If" sap:VirtualizedContainerService.HintSize="620.8,4132.8" sap2010:WorkflowViewState.IdRef="IfElseIf_1">
         <ui:IfElseIf.ConditionBlocks>
           <sc:BindingList x:TypeArguments="ui:IfElseIfBlock" AllowEdit="True" AllowNew="True" AllowRemove="True" RaiseListChangedEvents="True">
             <ui:IfElseIfBlock BlockType="If" Condition="[in_Condition = &quot;Zone&quot; or in_Condition = &quot;Category&quot;]">
@@ -123,7 +123,7 @@
                       <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                     </scg:Dictionary>
                   </sap:WorkflowViewStateService.ViewState>
-                  <ui:ForEachRow ColumnNames="{x:Null}" CurrentIndex="{x:Null}" sap2010:Annotation.AnnotationText="Loops through the data table of zone and category to get the id, name and description. It then calls the PerformTests workflow to perform the test for each of the rows in the data table." DataTable="[in_Table]" DisplayName="For Each Row in Data Table for zone or category" sap:VirtualizedContainerService.HintSize="527.2,1748" sap2010:WorkflowViewState.IdRef="ForEachRow_1">
+                  <ui:ForEachRow ColumnNames="{x:Null}" CurrentIndex="{x:Null}" sap2010:Annotation.AnnotationText="Loops through the data table of zone and category to get the id, name and description. It then calls the Zone or Category and the update excel file workflow to perform the test for each of the rows in the data table and to update the excel document." DataTable="[in_Table]" DisplayName="For Each Row in Data Table for zone or category" sap:VirtualizedContainerService.HintSize="527.2,1748" sap2010:WorkflowViewState.IdRef="ForEachRow_1">
                     <ui:ForEachRow.Body>
                       <ActivityAction x:TypeArguments="sd:DataRow">
                         <ActivityAction.Argument>
@@ -210,13 +210,13 @@
             </ui:IfElseIfBlock>
             <ui:IfElseIfBlock BlockType="ElseIf" Condition="[in_Condition = &quot;Device&quot;]">
               <ui:IfElseIfBlock.Then>
-                <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="476.8,1916.8" sap2010:WorkflowViewState.IdRef="Sequence_6">
+                <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="476.8,1932.8" sap2010:WorkflowViewState.IdRef="Sequence_6">
                   <sap:WorkflowViewStateService.ViewState>
                     <scg:Dictionary x:TypeArguments="x:String, x:Object">
                       <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                     </scg:Dictionary>
                   </sap:WorkflowViewStateService.ViewState>
-                  <ui:ForEachRow ColumnNames="{x:Null}" CurrentIndex="{x:Null}" sap2010:Annotation.AnnotationText="Loops through the data table of device to get the id, name, zone name, category name, status and is active. It then calls the PerformTests workflow to perform the test for each of the rows in the data table." DataTable="[in_Table]" DisplayName="For Each Row in Data Table for device" sap:VirtualizedContainerService.HintSize="433.6,1825.6" sap2010:WorkflowViewState.IdRef="ForEachRow_2">
+                  <ui:ForEachRow ColumnNames="{x:Null}" CurrentIndex="{x:Null}" sap2010:Annotation.AnnotationText="Loops through the data table of device to get the id, name, zone name, category name, status and is active. It then calls the Device and update excel file workflows to perform the test for each of the rows in the data table and to update the excel document." DataTable="[in_Table]" DisplayName="For Each Row in Data Table for device" sap:VirtualizedContainerService.HintSize="433.6,1841.6" sap2010:WorkflowViewState.IdRef="ForEachRow_2">
                     <ui:ForEachRow.Body>
                       <ActivityAction x:TypeArguments="sd:DataRow">
                         <ActivityAction.Argument>
