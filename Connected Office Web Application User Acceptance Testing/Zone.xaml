@@ -2,7 +2,7 @@
   <x:Members>
     <x:Property Name="in_Name" Type="InArgument(x:String)" />
     <x:Property Name="in_Description" Type="InArgument(x:String)" />
-    <x:Property Name="out_TestResult" Type="InArgument(x:String)" />
+    <x:Property Name="out_TestResult" Type="OutArgument(x:String)" />
   </x:Members>
   <VisualBasic.Settings>
     <x:Null />
