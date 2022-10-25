@@ -105,7 +105,6 @@
         <Variable x:TypeArguments="x:String" Name="ZoneName" />
         <Variable x:TypeArguments="x:String" Name="Status" />
         <Variable x:TypeArguments="x:Boolean" Name="IsActive" />
-        <Variable x:TypeArguments="x:String" Name="TestResult" />
       </Sequence.Variables>
       <sap:WorkflowViewStateService.ViewState>
         <scg:Dictionary x:TypeArguments="x:String, x:Object">
@@ -131,40 +130,40 @@
                 <sc:BindingList x:TypeArguments="ui:IfElseIfBlock" AllowEdit="True" AllowNew="True" AllowRemove="True" RaiseListChangedEvents="True">
                   <ui:IfElseIfBlock BlockType="If" Condition="[in_Condition = &quot;Zone&quot; or in_Condition = &quot;Category&quot;]">
                     <ui:IfElseIfBlock.Then>
-                      <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="648.8,1839.2" sap2010:WorkflowViewState.IdRef="Sequence_16">
+                      <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="570.4,1839.2" sap2010:WorkflowViewState.IdRef="Sequence_16">
                         <sap:WorkflowViewStateService.ViewState>
                           <scg:Dictionary x:TypeArguments="x:String, x:Object">
                             <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                           </scg:Dictionary>
                         </sap:WorkflowViewStateService.ViewState>
-                        <ui:ForEachRow ColumnNames="{x:Null}" CurrentIndex="{x:Null}" sap2010:Annotation.AnnotationText="Loops through the data table of zone and category to get the id, name and description. It then calls the Zone or Category and the update excel file workflow to perform the test for each of the rows in the data table and to update the excel document." DataTable="[in_Table]" DisplayName="For Each Row in Data Table for zone or category" sap:VirtualizedContainerService.HintSize="605.6,1748" sap2010:WorkflowViewState.IdRef="ForEachRow_3">
+                        <ui:ForEachRow ColumnNames="{x:Null}" CurrentIndex="{x:Null}" sap2010:Annotation.AnnotationText="Loops through the data table of zone and category to get the id, name and description. It then calls the Zone or Category and the update excel file workflow to perform the test for each of the rows in the data table and to update the excel document." DataTable="[in_Table]" DisplayName="For Each Row in Data Table for zone or category" sap:VirtualizedContainerService.HintSize="527.2,1748" sap2010:WorkflowViewState.IdRef="ForEachRow_3">
                           <ui:ForEachRow.Body>
                             <ActivityAction x:TypeArguments="sd:DataRow">
                               <ActivityAction.Argument>
                                 <DelegateInArgument x:TypeArguments="sd:DataRow" Name="Row" />
                               </ActivityAction.Argument>
-                              <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="572,1562.4" sap2010:WorkflowViewState.IdRef="Sequence_15">
+                              <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="493.6,1562.4" sap2010:WorkflowViewState.IdRef="Sequence_15">
                                 <sap:WorkflowViewStateService.ViewState>
                                   <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                     <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                                   </scg:Dictionary>
                                 </sap:WorkflowViewStateService.ViewState>
-                                <ui:GetRowItem Column="{x:Null}" ColumnName="{x:Null}" ColumnIndex="0" DisplayName="Get ID row item" sap:VirtualizedContainerService.HintSize="528.8,197.6" sap2010:WorkflowViewState.IdRef="GetRowItem_10" Row="[Row]">
+                                <ui:GetRowItem Column="{x:Null}" ColumnName="{x:Null}" ColumnIndex="0" DisplayName="Get ID row item" sap:VirtualizedContainerService.HintSize="450.4,197.6" sap2010:WorkflowViewState.IdRef="GetRowItem_10" Row="[Row]">
                                   <ui:GetRowItem.Value>
                                     <OutArgument x:TypeArguments="x:String">[Id]</OutArgument>
                                   </ui:GetRowItem.Value>
                                 </ui:GetRowItem>
-                                <ui:GetRowItem Column="{x:Null}" ColumnName="{x:Null}" ColumnIndex="1" DisplayName="Get Name row item" sap:VirtualizedContainerService.HintSize="528.8,197.6" sap2010:WorkflowViewState.IdRef="GetRowItem_11" Row="[Row]">
+                                <ui:GetRowItem Column="{x:Null}" ColumnName="{x:Null}" ColumnIndex="1" DisplayName="Get Name row item" sap:VirtualizedContainerService.HintSize="450.4,197.6" sap2010:WorkflowViewState.IdRef="GetRowItem_11" Row="[Row]">
                                   <ui:GetRowItem.Value>
                                     <OutArgument x:TypeArguments="x:String">[Name]</OutArgument>
                                   </ui:GetRowItem.Value>
                                 </ui:GetRowItem>
-                                <ui:GetRowItem Column="{x:Null}" ColumnName="{x:Null}" ColumnIndex="2" DisplayName="Get Description row item" sap:VirtualizedContainerService.HintSize="528.8,197.6" sap2010:WorkflowViewState.IdRef="GetRowItem_12" Row="[Row]">
+                                <ui:GetRowItem Column="{x:Null}" ColumnName="{x:Null}" ColumnIndex="2" DisplayName="Get Description row item" sap:VirtualizedContainerService.HintSize="450.4,197.6" sap2010:WorkflowViewState.IdRef="GetRowItem_12" Row="[Row]">
                                   <ui:GetRowItem.Value>
                                     <OutArgument x:TypeArguments="x:String">[Description]</OutArgument>
                                   </ui:GetRowItem.Value>
                                 </ui:GetRowItem>
-                                <ui:IfElseIf DisplayName="Else If" sap:VirtualizedContainerService.HintSize="528.8,758.4" sap2010:WorkflowViewState.IdRef="IfElseIf_4">
+                                <ui:IfElseIf DisplayName="Else If" sap:VirtualizedContainerService.HintSize="450.4,758.4" sap2010:WorkflowViewState.IdRef="IfElseIf_4">
                                   <ui:IfElseIf.ConditionBlocks>
                                     <sc:BindingList x:TypeArguments="ui:IfElseIfBlock" AllowEdit="True" AllowNew="True" AllowRemove="True" RaiseListChangedEvents="True">
                                       <ui:IfElseIfBlock BlockType="If" Condition="[Id.Contains(&quot;Z&quot;)]">
@@ -177,18 +176,9 @@
                                             </sap:WorkflowViewStateService.ViewState>
                                             <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Zone.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="356.8,123.2" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_4" UnSafe="False" WorkflowFileName="Zone.xaml">
                                               <ui:InvokeWorkflowFile.Arguments>
-                                                <InArgument x:TypeArguments="x:String" x:Key="in_Name">
-                                                  <VisualBasicValue x:TypeArguments="x:String" ExpressionText="Name" />
-                                                </InArgument>
-                                                <InArgument x:TypeArguments="x:String" x:Key="in_Description">
-                                                  <VisualBasicValue x:TypeArguments="x:String" ExpressionText="Description" />
-                                                </InArgument>
-                                                <OutArgument x:TypeArguments="x:String" x:Key="out_TestResult">
-                                                  <VisualBasicReference x:TypeArguments="x:String" ExpressionText="TestResult" />
-                                                </OutArgument>
-                                                <InArgument x:TypeArguments="x:Boolean" x:Key="in_Condition">
-                                                  <Literal x:TypeArguments="x:Boolean" Value="True" />
-                                                </InArgument>
+                                                <InArgument x:TypeArguments="x:String" x:Key="in_Name">[Name]</InArgument>
+                                                <InArgument x:TypeArguments="x:String" x:Key="in_Description">[Description]</InArgument>
+                                                <InArgument x:TypeArguments="x:Boolean" x:Key="in_Condition">True</InArgument>
                                               </ui:InvokeWorkflowFile.Arguments>
                                             </ui:InvokeWorkflowFile>
                                           </Sequence>
@@ -204,18 +194,9 @@
                                             </sap:WorkflowViewStateService.ViewState>
                                             <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Category.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="356.8,123.2" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_10" UnSafe="False" WorkflowFileName="Category.xaml">
                                               <ui:InvokeWorkflowFile.Arguments>
-                                                <OutArgument x:TypeArguments="x:String" x:Key="out_TestResult">
-                                                  <VisualBasicReference x:TypeArguments="x:String" ExpressionText="TestResult" />
-                                                </OutArgument>
-                                                <InArgument x:TypeArguments="x:String" x:Key="in_Name">
-                                                  <VisualBasicValue x:TypeArguments="x:String" ExpressionText="Name" />
-                                                </InArgument>
-                                                <InArgument x:TypeArguments="x:String" x:Key="in_Description">
-                                                  <VisualBasicValue x:TypeArguments="x:String" ExpressionText="Description" />
-                                                </InArgument>
-                                                <InArgument x:TypeArguments="x:Boolean" x:Key="in_Condition">
-                                                  <Literal x:TypeArguments="x:Boolean" Value="True" />
-                                                </InArgument>
+                                                <InArgument x:TypeArguments="x:String" x:Key="in_Name">[Name]</InArgument>
+                                                <InArgument x:TypeArguments="x:String" x:Key="in_Description">[Description]</InArgument>
+                                                <InArgument x:TypeArguments="x:Boolean" x:Key="in_Condition">True</InArgument>
                                               </ui:InvokeWorkflowFile.Arguments>
                                             </ui:InvokeWorkflowFile>
                                           </Sequence>
@@ -288,27 +269,12 @@
                                 </ui:GetRowItem>
                                 <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Device.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="356.8,123.2" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_11" UnSafe="False" WorkflowFileName="Device.xaml">
                                   <ui:InvokeWorkflowFile.Arguments>
-                                    <InArgument x:TypeArguments="x:String" x:Key="in_Name">
-                                      <VisualBasicValue x:TypeArguments="x:String" ExpressionText="Name" />
-                                    </InArgument>
-                                    <InArgument x:TypeArguments="x:String" x:Key="in_CName">
-                                      <VisualBasicValue x:TypeArguments="x:String" ExpressionText="CategoryName" />
-                                    </InArgument>
-                                    <InArgument x:TypeArguments="x:String" x:Key="in_ZName">
-                                      <VisualBasicValue x:TypeArguments="x:String" ExpressionText="ZoneName" />
-                                    </InArgument>
-                                    <InArgument x:TypeArguments="x:String" x:Key="in_Status">
-                                      <VisualBasicValue x:TypeArguments="x:String" ExpressionText="Status" />
-                                    </InArgument>
-                                    <InArgument x:TypeArguments="x:Boolean" x:Key="in_IsActive">
-                                      <VisualBasicValue x:TypeArguments="x:Boolean" ExpressionText="IsActive" />
-                                    </InArgument>
-                                    <OutArgument x:TypeArguments="x:String" x:Key="out_TestResult">
-                                      <VisualBasicReference x:TypeArguments="x:String" ExpressionText="TestResult" />
-                                    </OutArgument>
-                                    <InArgument x:TypeArguments="x:Boolean" x:Key="in_Condition">
-                                      <Literal x:TypeArguments="x:Boolean" Value="True" />
-                                    </InArgument>
+                                    <InArgument x:TypeArguments="x:String" x:Key="in_Name">[Name]</InArgument>
+                                    <InArgument x:TypeArguments="x:String" x:Key="in_CName">[CategoryName]</InArgument>
+                                    <InArgument x:TypeArguments="x:String" x:Key="in_ZName">[ZoneName]</InArgument>
+                                    <InArgument x:TypeArguments="x:String" x:Key="in_Status">[Status]</InArgument>
+                                    <InArgument x:TypeArguments="x:Boolean" x:Key="in_IsActive">[IsActive]</InArgument>
+                                    <InArgument x:TypeArguments="x:Boolean" x:Key="in_Condition">True</InArgument>
                                   </ui:InvokeWorkflowFile.Arguments>
                                 </ui:InvokeWorkflowFile>
                               </Sequence>
@@ -371,7 +337,6 @@
                                     <InArgument x:TypeArguments="x:String" x:Key="in_Description">
                                       <Literal x:TypeArguments="x:String" Value="" />
                                     </InArgument>
-                                    <OutArgument x:TypeArguments="x:String" x:Key="out_TestResult">[TestResult]</OutArgument>
                                     <InArgument x:TypeArguments="x:Boolean" x:Key="in_Condition">False</InArgument>
                                   </ui:InvokeWorkflowFile.Arguments>
                                 </ui:InvokeWorkflowFile>
@@ -404,18 +369,13 @@
                                 </sap:WorkflowViewStateService.ViewState>
                                 <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Category.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="356.8,123.2" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_8" UnSafe="False" WorkflowFileName="Category.xaml">
                                   <ui:InvokeWorkflowFile.Arguments>
-                                    <OutArgument x:TypeArguments="x:String" x:Key="out_TestResult">
-                                      <VisualBasicReference x:TypeArguments="x:String" ExpressionText="TestResult" />
-                                    </OutArgument>
                                     <InArgument x:TypeArguments="x:String" x:Key="in_Name">
                                       <Literal x:TypeArguments="x:String" Value="" />
                                     </InArgument>
                                     <InArgument x:TypeArguments="x:String" x:Key="in_Description">
                                       <Literal x:TypeArguments="x:String" Value="" />
                                     </InArgument>
-                                    <InArgument x:TypeArguments="x:Boolean" x:Key="in_Condition">
-                                      <Literal x:TypeArguments="x:Boolean" />
-                                    </InArgument>
+                                    <InArgument x:TypeArguments="x:Boolean" x:Key="in_Condition">False</InArgument>
                                   </ui:InvokeWorkflowFile.Arguments>
                                 </ui:InvokeWorkflowFile>
                               </Sequence>
@@ -459,15 +419,8 @@
                                     <InArgument x:TypeArguments="x:String" x:Key="in_Status">
                                       <Literal x:TypeArguments="x:String" Value="" />
                                     </InArgument>
-                                    <InArgument x:TypeArguments="x:Boolean" x:Key="in_IsActive">
-                                      <Literal x:TypeArguments="x:Boolean" />
-                                    </InArgument>
-                                    <OutArgument x:TypeArguments="x:String" x:Key="out_TestResult">
-                                      <VisualBasicReference x:TypeArguments="x:String" ExpressionText="TestResult" />
-                                    </OutArgument>
-                                    <InArgument x:TypeArguments="x:Boolean" x:Key="in_Condition">
-                                      <Literal x:TypeArguments="x:Boolean" />
-                                    </InArgument>
+                                    <InArgument x:TypeArguments="x:Boolean" x:Key="in_IsActive">False</InArgument>
+                                    <InArgument x:TypeArguments="x:Boolean" x:Key="in_Condition">False</InArgument>
                                   </ui:InvokeWorkflowFile.Arguments>
                                 </ui:InvokeWorkflowFile>
                               </Sequence>
