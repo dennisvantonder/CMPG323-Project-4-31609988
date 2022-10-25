@@ -1,20 +1,16 @@
-<Activity mc:Ignorable="sap sap2010" x:Class="ZoneAndCategoryTest" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:sc="clr-namespace:System.ComponentModel;assembly=System.ComponentModel.TypeConverter" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=System.Private.CoreLib" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+<Activity mc:Ignorable="sap sap2010" x:Class="Zone" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:sc="clr-namespace:System.ComponentModel;assembly=System.ComponentModel.TypeConverter" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=System.Private.CoreLib" xmlns:sd="clr-namespace:System.Data;assembly=System.Data.Common" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
   <x:Members>
-    <x:Property Name="in_Name" Type="InArgument(x:String)" />
-    <x:Property Name="in_Id" Type="InArgument(x:String)" />
-    <x:Property Name="in_Description" Type="InArgument(x:String)" />
-    <x:Property Name="in_ZName" Type="InArgument(x:String)" />
-    <x:Property Name="in_CName" Type="InArgument(x:String)" />
-    <x:Property Name="in_Status" Type="InArgument(x:String)" />
-    <x:Property Name="in_IsActive" Type="InArgument(x:Boolean)" />
+    <x:Property Name="in_Condition" Type="InArgument(x:String)" />
+    <x:Property Name="in_Table" Type="InArgument(sd:DataTable)" />
+    <x:Property Name="in_CreateOrRead" Type="InArgument(x:Boolean)" />
   </x:Members>
   <VisualBasic.Settings>
     <x:Null />
   </VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>1234.4,1525.5999999999997</sap:VirtualizedContainerService.HintSize>
-  <sap2010:WorkflowViewState.IdRef>ZoneAndCategoryTest_1</sap2010:WorkflowViewState.IdRef>
+  <sap:VirtualizedContainerService.HintSize>1234.4,6570.4</sap:VirtualizedContainerService.HintSize>
+  <sap2010:WorkflowViewState.IdRef>Zone_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
-    <scg:List x:TypeArguments="x:String" Capacity="33">
+    <scg:List x:TypeArguments="x:String" Capacity="30">
       <x:String>System.Activities</x:String>
       <x:String>System.Activities.Statements</x:String>
       <x:String>System.Activities.Expressions</x:String>
@@ -42,16 +38,13 @@
       <x:String>System.Reflection</x:String>
       <x:String>System.ComponentModel</x:String>
       <x:String>System.Runtime.Serialization</x:String>
-      <x:String>UiPath.UIAutomationNext.Enums</x:String>
-      <x:String>UiPath.UIAutomationCore.Contracts</x:String>
-      <x:String>UiPath.UIAutomationNext.Activities</x:String>
-      <x:String>UiPath.Platform.ObjectLibrary</x:String>
-      <x:String>UiPath.Shared.Activities</x:String>
-      <x:String>System.Security</x:String>
+      <x:String>System.Xml.Serialization</x:String>
+      <x:String>UiPath.DataTableUtilities</x:String>
+      <x:String>Microsoft.VisualBasic.CompilerServices</x:String>
     </scg:List>
   </TextExpression.NamespacesForImplementation>
   <TextExpression.ReferencesForImplementation>
-    <scg:List x:TypeArguments="AssemblyReference" Capacity="48">
+    <scg:List x:TypeArguments="AssemblyReference" Capacity="44">
       <AssemblyReference>System.Activities</AssemblyReference>
       <AssemblyReference>Microsoft.VisualBasic</AssemblyReference>
       <AssemblyReference>System.Private.CoreLib</AssemblyReference>
@@ -70,6 +63,8 @@
       <AssemblyReference>System.Reflection.DispatchProxy</AssemblyReference>
       <AssemblyReference>System.Reflection.TypeExtensions</AssemblyReference>
       <AssemblyReference>System.Reflection.Metadata</AssemblyReference>
+      <AssemblyReference>System.Data.SqlClient</AssemblyReference>
+      <AssemblyReference>System.Data.Common</AssemblyReference>
       <AssemblyReference>System.ComponentModel.EventBasedAsync</AssemblyReference>
       <AssemblyReference>PresentationFramework</AssemblyReference>
       <AssemblyReference>System.ComponentModel.TypeConverter</AssemblyReference>
@@ -77,7 +72,11 @@
       <AssemblyReference>Microsoft.Win32.Primitives</AssemblyReference>
       <AssemblyReference>System.ComponentModel</AssemblyReference>
       <AssemblyReference>System.ComponentModel.Primitives</AssemblyReference>
-      <AssemblyReference>UiPath.Workflow</AssemblyReference>
+      <AssemblyReference>System.Private.ServiceModel</AssemblyReference>
+      <AssemblyReference>System.Runtime.Serialization.Formatters</AssemblyReference>
+      <AssemblyReference>System.Private.DataContractSerialization</AssemblyReference>
+      <AssemblyReference>System.Runtime.Serialization.Primitives</AssemblyReference>
+      <AssemblyReference>System.Private.Xml</AssemblyReference>
       <AssemblyReference>NPOI</AssemblyReference>
       <AssemblyReference>System.Memory.Data</AssemblyReference>
       <AssemblyReference>System.Console</AssemblyReference>
@@ -85,30 +84,27 @@
       <AssemblyReference>System.Security.Permissions</AssemblyReference>
       <AssemblyReference>System.Memory</AssemblyReference>
       <AssemblyReference>System.Private.Uri</AssemblyReference>
+      <AssemblyReference>UiPath.Workflow</AssemblyReference>
+      <AssemblyReference>Microsoft.VisualBasic.Forms</AssemblyReference>
+      <AssemblyReference>Microsoft.VisualBasic.Core</AssemblyReference>
       <AssemblyReference>UiPath.System.Activities.Design</AssemblyReference>
-      <AssemblyReference>System.Private.ServiceModel</AssemblyReference>
-      <AssemblyReference>System.Runtime.Serialization.Formatters</AssemblyReference>
-      <AssemblyReference>System.Private.DataContractSerialization</AssemblyReference>
-      <AssemblyReference>System.Runtime.Serialization.Primitives</AssemblyReference>
-      <AssemblyReference>UiPath.UIAutomationNext</AssemblyReference>
-      <AssemblyReference>UiPath.UIAutomationCore</AssemblyReference>
-      <AssemblyReference>UiPath.UIAutomationNext.Activities</AssemblyReference>
-      <AssemblyReference>UiPath.Platform</AssemblyReference>
-      <AssemblyReference>UiPath.Excel.Activities</AssemblyReference>
-      <AssemblyReference>UiPath.Mail.Activities</AssemblyReference>
-      <AssemblyReference>UiPath.Testing.Activities</AssemblyReference>
-      <AssemblyReference>UiPath.OCR.Activities</AssemblyReference>
-      <AssemblyReference>System.Runtime.InteropServices</AssemblyReference>
     </scg:List>
   </TextExpression.ReferencesForImplementation>
-  <Sequence DisplayName="ZoneAndCategoryTest" sap:VirtualizedContainerService.HintSize="556,1460.8" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence DisplayName="Zone" sap:VirtualizedContainerService.HintSize="929.6,6505.6" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <sap:WorkflowViewStateService.ViewState>
       <scg:Dictionary x:TypeArguments="x:String, x:Object">
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <Sequence sap2010:Annotation.AnnotationText="This sequence uses the web app to test the CRUD for zone, category and device." DisplayName="Perform UAT sequence" sap:VirtualizedContainerService.HintSize="512.8,1369.6" sap2010:WorkflowViewState.IdRef="Sequence_3">
+    <Sequence sap2010:Annotation.AnnotationText="This sequence runs and gets the values from the data table that is passed through then it calls the workflow to perform the testing on the web app." DisplayName="Get values from data table and run UAT" sap:VirtualizedContainerService.HintSize="886.4,6414.4" sap2010:WorkflowViewState.IdRef="Sequence_2">
       <Sequence.Variables>
+        <Variable x:TypeArguments="x:String" Name="Name" />
+        <Variable x:TypeArguments="x:String" Name="Id" />
+        <Variable x:TypeArguments="x:String" Name="Description" />
+        <Variable x:TypeArguments="x:String" Name="CategoryName" />
+        <Variable x:TypeArguments="x:String" Name="ZoneName" />
+        <Variable x:TypeArguments="x:String" Name="Status" />
+        <Variable x:TypeArguments="x:Boolean" Name="IsActive" />
         <Variable x:TypeArguments="x:String" Name="TestResult" />
       </Sequence.Variables>
       <sap:WorkflowViewStateService.ViewState>
@@ -117,66 +113,376 @@
           <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
-      <ui:IfElseIf sap2010:Annotation.AnnotationText="Performs test based on the id of each row." DisplayName="Else if to check Id" sap:VirtualizedContainerService.HintSize="450.4,1215.2" sap2010:WorkflowViewState.IdRef="IfElseIf_1">
-        <ui:IfElseIf.ConditionBlocks>
-          <sc:BindingList x:TypeArguments="ui:IfElseIfBlock" AllowEdit="True" AllowNew="True" AllowRemove="True" RaiseListChangedEvents="True">
-            <ui:IfElseIfBlock BlockType="If" Condition="[in_Id.Contains(&quot;Z&quot;)]">
-              <ui:IfElseIfBlock.Then>
-                <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="400,352" sap2010:WorkflowViewState.IdRef="Sequence_2">
-                  <sap:WorkflowViewStateService.ViewState>
-                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-                    </scg:Dictionary>
-                  </sap:WorkflowViewStateService.ViewState>
-                  <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="356.8,97.6" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Info" Message="[in_Id + &quot; , &quot; + in_Name]" />
-                  <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Zone.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="356.8,123.2" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_1" UnSafe="False" WorkflowFileName="Zone.xaml">
-                    <ui:InvokeWorkflowFile.Arguments>
-                      <InArgument x:TypeArguments="x:String" x:Key="in_Name">
-                        <VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_Name" />
-                      </InArgument>
-                      <InArgument x:TypeArguments="x:String" x:Key="in_Description">
-                        <VisualBasicValue x:TypeArguments="x:String" ExpressionText="in_Description" />
-                      </InArgument>
-                      <InArgument x:TypeArguments="x:String" x:Key="out_TestResult">
-                        <VisualBasicValue x:TypeArguments="x:String" ExpressionText="TestResult" />
-                      </InArgument>
-                    </ui:InvokeWorkflowFile.Arguments>
-                  </ui:InvokeWorkflowFile>
-                </Sequence>
-              </ui:IfElseIfBlock.Then>
-            </ui:IfElseIfBlock>
-            <ui:IfElseIfBlock BlockType="ElseIf" Condition="[in_Id.Contains(&quot;C&quot;)]">
-              <ui:IfElseIfBlock.Then>
-                <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="400,188.8" sap2010:WorkflowViewState.IdRef="Sequence_4">
-                  <sap:WorkflowViewStateService.ViewState>
-                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-                    </scg:Dictionary>
-                  </sap:WorkflowViewStateService.ViewState>
-                  <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="356.8,97.6" sap2010:WorkflowViewState.IdRef="LogMessage_2" Level="Info" Message="[in_Id + &quot; , &quot; + in_Name]" />
-                </Sequence>
-              </ui:IfElseIfBlock.Then>
-            </ui:IfElseIfBlock>
-            <ui:IfElseIfBlock BlockType="ElseIf" Condition="[in_Id.Contains(&quot;D&quot;)]">
-              <ui:IfElseIfBlock.Then>
-                <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="400,188.8" sap2010:WorkflowViewState.IdRef="Sequence_5">
-                  <sap:WorkflowViewStateService.ViewState>
-                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-                    </scg:Dictionary>
-                  </sap:WorkflowViewStateService.ViewState>
-                  <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="356.8,97.6" sap2010:WorkflowViewState.IdRef="LogMessage_3" Level="Info" Message="[in_Id + &quot; , &quot; + in_Name + &quot; , &quot; + in_IsActive.ToString]" />
-                </Sequence>
-              </ui:IfElseIfBlock.Then>
-            </ui:IfElseIfBlock>
-          </sc:BindingList>
-        </ui:IfElseIf.ConditionBlocks>
+      <If sap2010:Annotation.AnnotationText="" Condition="[in_CreateOrRead]" sap:VirtualizedContainerService.HintSize="824,6260" sap2010:WorkflowViewState.IdRef="If_1">
         <sap:WorkflowViewStateService.ViewState>
           <scg:Dictionary x:TypeArguments="x:String, x:Object">
             <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
           </scg:Dictionary>
         </sap:WorkflowViewStateService.ViewState>
-      </ui:IfElseIf>
+        <If.Then>
+          <Sequence sap:VirtualizedContainerService.HintSize="742.4,4224" sap2010:WorkflowViewState.IdRef="Sequence_20">
+            <sap:WorkflowViewStateService.ViewState>
+              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+              </scg:Dictionary>
+            </sap:WorkflowViewStateService.ViewState>
+            <ui:IfElseIf sap2010:Annotation.AnnotationText="Checks the condition coming in to see if the data table is for zone or category or device." DisplayName="Else If" sap:VirtualizedContainerService.HintSize="699.2,4132.8" sap2010:WorkflowViewState.IdRef="IfElseIf_5">
+              <ui:IfElseIf.ConditionBlocks>
+                <sc:BindingList x:TypeArguments="ui:IfElseIfBlock" AllowEdit="True" AllowNew="True" AllowRemove="True" RaiseListChangedEvents="True">
+                  <ui:IfElseIfBlock BlockType="If" Condition="[in_Condition = &quot;Zone&quot; or in_Condition = &quot;Category&quot;]">
+                    <ui:IfElseIfBlock.Then>
+                      <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="648.8,1839.2" sap2010:WorkflowViewState.IdRef="Sequence_16">
+                        <sap:WorkflowViewStateService.ViewState>
+                          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                          </scg:Dictionary>
+                        </sap:WorkflowViewStateService.ViewState>
+                        <ui:ForEachRow ColumnNames="{x:Null}" CurrentIndex="{x:Null}" sap2010:Annotation.AnnotationText="Loops through the data table of zone and category to get the id, name and description. It then calls the Zone or Category and the update excel file workflow to perform the test for each of the rows in the data table and to update the excel document." DataTable="[in_Table]" DisplayName="For Each Row in Data Table for zone or category" sap:VirtualizedContainerService.HintSize="605.6,1748" sap2010:WorkflowViewState.IdRef="ForEachRow_3">
+                          <ui:ForEachRow.Body>
+                            <ActivityAction x:TypeArguments="sd:DataRow">
+                              <ActivityAction.Argument>
+                                <DelegateInArgument x:TypeArguments="sd:DataRow" Name="Row" />
+                              </ActivityAction.Argument>
+                              <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="572,1562.4" sap2010:WorkflowViewState.IdRef="Sequence_15">
+                                <sap:WorkflowViewStateService.ViewState>
+                                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                    <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                  </scg:Dictionary>
+                                </sap:WorkflowViewStateService.ViewState>
+                                <ui:GetRowItem Column="{x:Null}" ColumnName="{x:Null}" ColumnIndex="0" DisplayName="Get ID row item" sap:VirtualizedContainerService.HintSize="528.8,197.6" sap2010:WorkflowViewState.IdRef="GetRowItem_10" Row="[Row]">
+                                  <ui:GetRowItem.Value>
+                                    <OutArgument x:TypeArguments="x:String">[Id]</OutArgument>
+                                  </ui:GetRowItem.Value>
+                                </ui:GetRowItem>
+                                <ui:GetRowItem Column="{x:Null}" ColumnName="{x:Null}" ColumnIndex="1" DisplayName="Get Name row item" sap:VirtualizedContainerService.HintSize="528.8,197.6" sap2010:WorkflowViewState.IdRef="GetRowItem_11" Row="[Row]">
+                                  <ui:GetRowItem.Value>
+                                    <OutArgument x:TypeArguments="x:String">[Name]</OutArgument>
+                                  </ui:GetRowItem.Value>
+                                </ui:GetRowItem>
+                                <ui:GetRowItem Column="{x:Null}" ColumnName="{x:Null}" ColumnIndex="2" DisplayName="Get Description row item" sap:VirtualizedContainerService.HintSize="528.8,197.6" sap2010:WorkflowViewState.IdRef="GetRowItem_12" Row="[Row]">
+                                  <ui:GetRowItem.Value>
+                                    <OutArgument x:TypeArguments="x:String">[Description]</OutArgument>
+                                  </ui:GetRowItem.Value>
+                                </ui:GetRowItem>
+                                <ui:IfElseIf DisplayName="Else If" sap:VirtualizedContainerService.HintSize="528.8,758.4" sap2010:WorkflowViewState.IdRef="IfElseIf_4">
+                                  <ui:IfElseIf.ConditionBlocks>
+                                    <sc:BindingList x:TypeArguments="ui:IfElseIfBlock" AllowEdit="True" AllowNew="True" AllowRemove="True" RaiseListChangedEvents="True">
+                                      <ui:IfElseIfBlock BlockType="If" Condition="[Id.Contains(&quot;Z&quot;)]">
+                                        <ui:IfElseIfBlock.Then>
+                                          <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="400,214.4" sap2010:WorkflowViewState.IdRef="Sequence_12">
+                                            <sap:WorkflowViewStateService.ViewState>
+                                              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                              </scg:Dictionary>
+                                            </sap:WorkflowViewStateService.ViewState>
+                                            <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Zone.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="356.8,123.2" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_4" UnSafe="False" WorkflowFileName="Zone.xaml">
+                                              <ui:InvokeWorkflowFile.Arguments>
+                                                <InArgument x:TypeArguments="x:String" x:Key="in_Name">
+                                                  <VisualBasicValue x:TypeArguments="x:String" ExpressionText="Name" />
+                                                </InArgument>
+                                                <InArgument x:TypeArguments="x:String" x:Key="in_Description">
+                                                  <VisualBasicValue x:TypeArguments="x:String" ExpressionText="Description" />
+                                                </InArgument>
+                                                <OutArgument x:TypeArguments="x:String" x:Key="out_TestResult">
+                                                  <VisualBasicReference x:TypeArguments="x:String" ExpressionText="TestResult" />
+                                                </OutArgument>
+                                                <InArgument x:TypeArguments="x:Boolean" x:Key="in_Condition">
+                                                  <Literal x:TypeArguments="x:Boolean" Value="True" />
+                                                </InArgument>
+                                              </ui:InvokeWorkflowFile.Arguments>
+                                            </ui:InvokeWorkflowFile>
+                                          </Sequence>
+                                        </ui:IfElseIfBlock.Then>
+                                      </ui:IfElseIfBlock>
+                                      <ui:IfElseIfBlock BlockType="ElseIf" Condition="[Id.Contains(&quot;C&quot;)]">
+                                        <ui:IfElseIfBlock.Then>
+                                          <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="400,214.4" sap2010:WorkflowViewState.IdRef="Sequence_14">
+                                            <sap:WorkflowViewStateService.ViewState>
+                                              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                              </scg:Dictionary>
+                                            </sap:WorkflowViewStateService.ViewState>
+                                            <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Category.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="356.8,123.2" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_10" UnSafe="False" WorkflowFileName="Category.xaml">
+                                              <ui:InvokeWorkflowFile.Arguments>
+                                                <OutArgument x:TypeArguments="x:String" x:Key="out_TestResult">
+                                                  <VisualBasicReference x:TypeArguments="x:String" ExpressionText="TestResult" />
+                                                </OutArgument>
+                                                <InArgument x:TypeArguments="x:String" x:Key="in_Name">
+                                                  <VisualBasicValue x:TypeArguments="x:String" ExpressionText="Name" />
+                                                </InArgument>
+                                                <InArgument x:TypeArguments="x:String" x:Key="in_Description">
+                                                  <VisualBasicValue x:TypeArguments="x:String" ExpressionText="Description" />
+                                                </InArgument>
+                                                <InArgument x:TypeArguments="x:Boolean" x:Key="in_Condition">
+                                                  <Literal x:TypeArguments="x:Boolean" Value="True" />
+                                                </InArgument>
+                                              </ui:InvokeWorkflowFile.Arguments>
+                                            </ui:InvokeWorkflowFile>
+                                          </Sequence>
+                                        </ui:IfElseIfBlock.Then>
+                                      </ui:IfElseIfBlock>
+                                    </sc:BindingList>
+                                  </ui:IfElseIf.ConditionBlocks>
+                                </ui:IfElseIf>
+                              </Sequence>
+                            </ActivityAction>
+                          </ui:ForEachRow.Body>
+                          <sap:WorkflowViewStateService.ViewState>
+                            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                              <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+                            </scg:Dictionary>
+                          </sap:WorkflowViewStateService.ViewState>
+                        </ui:ForEachRow>
+                      </Sequence>
+                    </ui:IfElseIfBlock.Then>
+                  </ui:IfElseIfBlock>
+                  <ui:IfElseIfBlock BlockType="ElseIf" Condition="[in_Condition = &quot;Device&quot;]">
+                    <ui:IfElseIfBlock.Then>
+                      <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="476.8,1932.8" sap2010:WorkflowViewState.IdRef="Sequence_19">
+                        <sap:WorkflowViewStateService.ViewState>
+                          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                          </scg:Dictionary>
+                        </sap:WorkflowViewStateService.ViewState>
+                        <ui:ForEachRow ColumnNames="{x:Null}" CurrentIndex="{x:Null}" sap2010:Annotation.AnnotationText="Loops through the data table of device to get the id, name, zone name, category name, status and is active. It then calls the Device and update excel file workflows to perform the test for each of the rows in the data table and to update the excel document." DataTable="[in_Table]" DisplayName="For Each Row in Data Table for device" sap:VirtualizedContainerService.HintSize="433.6,1841.6" sap2010:WorkflowViewState.IdRef="ForEachRow_4">
+                          <ui:ForEachRow.Body>
+                            <ActivityAction x:TypeArguments="sd:DataRow">
+                              <ActivityAction.Argument>
+                                <DelegateInArgument x:TypeArguments="sd:DataRow" Name="Row" />
+                              </ActivityAction.Argument>
+                              <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="400,1640" sap2010:WorkflowViewState.IdRef="Sequence_18">
+                                <sap:WorkflowViewStateService.ViewState>
+                                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                    <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                  </scg:Dictionary>
+                                </sap:WorkflowViewStateService.ViewState>
+                                <ui:GetRowItem Column="{x:Null}" ColumnName="{x:Null}" ColumnIndex="0" DisplayName="Get Id row item" sap:VirtualizedContainerService.HintSize="356.8,197.6" sap2010:WorkflowViewState.IdRef="GetRowItem_13" Row="[Row]">
+                                  <ui:GetRowItem.Value>
+                                    <OutArgument x:TypeArguments="x:String">[Id]</OutArgument>
+                                  </ui:GetRowItem.Value>
+                                </ui:GetRowItem>
+                                <ui:GetRowItem Column="{x:Null}" ColumnName="{x:Null}" ColumnIndex="1" DisplayName="Get Name row item" sap:VirtualizedContainerService.HintSize="356.8,197.6" sap2010:WorkflowViewState.IdRef="GetRowItem_14" Row="[Row]">
+                                  <ui:GetRowItem.Value>
+                                    <OutArgument x:TypeArguments="x:String">[Name]</OutArgument>
+                                  </ui:GetRowItem.Value>
+                                </ui:GetRowItem>
+                                <ui:GetRowItem Column="{x:Null}" ColumnName="{x:Null}" ColumnIndex="2" DisplayName="Get Category name row item" sap:VirtualizedContainerService.HintSize="356.8,197.6" sap2010:WorkflowViewState.IdRef="GetRowItem_15" Row="[Row]">
+                                  <ui:GetRowItem.Value>
+                                    <OutArgument x:TypeArguments="x:String">[CategoryName]</OutArgument>
+                                  </ui:GetRowItem.Value>
+                                </ui:GetRowItem>
+                                <ui:GetRowItem Column="{x:Null}" ColumnName="{x:Null}" ColumnIndex="3" DisplayName="Get Zone name row item" sap:VirtualizedContainerService.HintSize="356.8,197.6" sap2010:WorkflowViewState.IdRef="GetRowItem_16" Row="[Row]">
+                                  <ui:GetRowItem.Value>
+                                    <OutArgument x:TypeArguments="x:String">[ZoneName]</OutArgument>
+                                  </ui:GetRowItem.Value>
+                                </ui:GetRowItem>
+                                <ui:GetRowItem Column="{x:Null}" ColumnName="{x:Null}" ColumnIndex="4" DisplayName="Get Status row item" sap:VirtualizedContainerService.HintSize="356.8,197.6" sap2010:WorkflowViewState.IdRef="GetRowItem_17" Row="[Row]">
+                                  <ui:GetRowItem.Value>
+                                    <OutArgument x:TypeArguments="x:String">[Status]</OutArgument>
+                                  </ui:GetRowItem.Value>
+                                </ui:GetRowItem>
+                                <ui:GetRowItem Column="{x:Null}" ColumnName="{x:Null}" ColumnIndex="5" DisplayName="Get IsActive row item" sap:VirtualizedContainerService.HintSize="356.8,197.6" sap2010:WorkflowViewState.IdRef="GetRowItem_18" Row="[Row]">
+                                  <ui:GetRowItem.Value>
+                                    <OutArgument x:TypeArguments="x:Boolean">[IsActive]</OutArgument>
+                                  </ui:GetRowItem.Value>
+                                </ui:GetRowItem>
+                                <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Device.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="356.8,123.2" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_11" UnSafe="False" WorkflowFileName="Device.xaml">
+                                  <ui:InvokeWorkflowFile.Arguments>
+                                    <InArgument x:TypeArguments="x:String" x:Key="in_Name">
+                                      <VisualBasicValue x:TypeArguments="x:String" ExpressionText="Name" />
+                                    </InArgument>
+                                    <InArgument x:TypeArguments="x:String" x:Key="in_CName">
+                                      <VisualBasicValue x:TypeArguments="x:String" ExpressionText="CategoryName" />
+                                    </InArgument>
+                                    <InArgument x:TypeArguments="x:String" x:Key="in_ZName">
+                                      <VisualBasicValue x:TypeArguments="x:String" ExpressionText="ZoneName" />
+                                    </InArgument>
+                                    <InArgument x:TypeArguments="x:String" x:Key="in_Status">
+                                      <VisualBasicValue x:TypeArguments="x:String" ExpressionText="Status" />
+                                    </InArgument>
+                                    <InArgument x:TypeArguments="x:Boolean" x:Key="in_IsActive">
+                                      <VisualBasicValue x:TypeArguments="x:Boolean" ExpressionText="IsActive" />
+                                    </InArgument>
+                                    <OutArgument x:TypeArguments="x:String" x:Key="out_TestResult">
+                                      <VisualBasicReference x:TypeArguments="x:String" ExpressionText="TestResult" />
+                                    </OutArgument>
+                                    <InArgument x:TypeArguments="x:Boolean" x:Key="in_Condition">
+                                      <Literal x:TypeArguments="x:Boolean" Value="True" />
+                                    </InArgument>
+                                  </ui:InvokeWorkflowFile.Arguments>
+                                </ui:InvokeWorkflowFile>
+                              </Sequence>
+                            </ActivityAction>
+                          </ui:ForEachRow.Body>
+                          <sap:WorkflowViewStateService.ViewState>
+                            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                              <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+                            </scg:Dictionary>
+                          </sap:WorkflowViewStateService.ViewState>
+                        </ui:ForEachRow>
+                      </Sequence>
+                    </ui:IfElseIfBlock.Then>
+                  </ui:IfElseIfBlock>
+                </sc:BindingList>
+              </ui:IfElseIf.ConditionBlocks>
+              <sap:WorkflowViewStateService.ViewState>
+                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                  <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+                </scg:Dictionary>
+              </sap:WorkflowViewStateService.ViewState>
+            </ui:IfElseIf>
+          </Sequence>
+        </If.Then>
+        <If.Else>
+          <Sequence sap:VirtualizedContainerService.HintSize="647.2,1839.2" sap2010:WorkflowViewState.IdRef="Sequence_21">
+            <sap:WorkflowViewStateService.ViewState>
+              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+              </scg:Dictionary>
+            </sap:WorkflowViewStateService.ViewState>
+            <ui:IfElseIf DisplayName="Else If" sap:VirtualizedContainerService.HintSize="604,1748" sap2010:WorkflowViewState.IdRef="IfElseIf_6">
+              <ui:IfElseIf.ConditionBlocks>
+                <sc:BindingList x:TypeArguments="ui:IfElseIfBlock" AllowEdit="True" AllowNew="True" AllowRemove="True" RaiseListChangedEvents="True">
+                  <ui:IfElseIfBlock BlockType="If" Condition="[in_Condition = &quot;Zone&quot;]">
+                    <ui:IfElseIfBlock.Then>
+                      <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="476.8,431.2" sap2010:WorkflowViewState.IdRef="Sequence_23">
+                        <sap:WorkflowViewStateService.ViewState>
+                          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                          </scg:Dictionary>
+                        </sap:WorkflowViewStateService.ViewState>
+                        <ui:ForEachRow ColumnNames="{x:Null}" CurrentIndex="{x:Null}" DataTable="[in_Table]" DisplayName="For Each Row in Data Table" sap:VirtualizedContainerService.HintSize="433.6,340" sap2010:WorkflowViewState.IdRef="ForEachRow_5">
+                          <ui:ForEachRow.Body>
+                            <ActivityAction x:TypeArguments="sd:DataRow">
+                              <ActivityAction.Argument>
+                                <DelegateInArgument x:TypeArguments="sd:DataRow" Name="Row" />
+                              </ActivityAction.Argument>
+                              <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="400,214.4" sap2010:WorkflowViewState.IdRef="Sequence_22">
+                                <sap:WorkflowViewStateService.ViewState>
+                                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                    <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                  </scg:Dictionary>
+                                </sap:WorkflowViewStateService.ViewState>
+                                <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Zone.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="356.8,123.2" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_7" UnSafe="False" WorkflowFileName="Zone.xaml">
+                                  <ui:InvokeWorkflowFile.Arguments>
+                                    <InArgument x:TypeArguments="x:String" x:Key="in_Name">
+                                      <Literal x:TypeArguments="x:String" Value="" />
+                                    </InArgument>
+                                    <InArgument x:TypeArguments="x:String" x:Key="in_Description">
+                                      <Literal x:TypeArguments="x:String" Value="" />
+                                    </InArgument>
+                                    <OutArgument x:TypeArguments="x:String" x:Key="out_TestResult">[TestResult]</OutArgument>
+                                    <InArgument x:TypeArguments="x:Boolean" x:Key="in_Condition">False</InArgument>
+                                  </ui:InvokeWorkflowFile.Arguments>
+                                </ui:InvokeWorkflowFile>
+                              </Sequence>
+                            </ActivityAction>
+                          </ui:ForEachRow.Body>
+                        </ui:ForEachRow>
+                      </Sequence>
+                    </ui:IfElseIfBlock.Then>
+                  </ui:IfElseIfBlock>
+                  <ui:IfElseIfBlock BlockType="ElseIf" Condition="[in_Condition = &quot;Category&quot;]">
+                    <ui:IfElseIfBlock.Then>
+                      <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="476.8,431.2" sap2010:WorkflowViewState.IdRef="Sequence_24">
+                        <sap:WorkflowViewStateService.ViewState>
+                          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                          </scg:Dictionary>
+                        </sap:WorkflowViewStateService.ViewState>
+                        <ui:ForEachRow ColumnNames="{x:Null}" CurrentIndex="{x:Null}" DataTable="[in_Table]" DisplayName="For Each Row in Data Table" sap:VirtualizedContainerService.HintSize="433.6,340" sap2010:WorkflowViewState.IdRef="ForEachRow_6">
+                          <ui:ForEachRow.Body>
+                            <ActivityAction x:TypeArguments="sd:DataRow">
+                              <ActivityAction.Argument>
+                                <DelegateInArgument x:TypeArguments="sd:DataRow" Name="Row" />
+                              </ActivityAction.Argument>
+                              <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="400,214.4" sap2010:WorkflowViewState.IdRef="Sequence_26">
+                                <sap:WorkflowViewStateService.ViewState>
+                                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                    <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                  </scg:Dictionary>
+                                </sap:WorkflowViewStateService.ViewState>
+                                <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Category.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="356.8,123.2" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_8" UnSafe="False" WorkflowFileName="Category.xaml">
+                                  <ui:InvokeWorkflowFile.Arguments>
+                                    <OutArgument x:TypeArguments="x:String" x:Key="out_TestResult">
+                                      <VisualBasicReference x:TypeArguments="x:String" ExpressionText="TestResult" />
+                                    </OutArgument>
+                                    <InArgument x:TypeArguments="x:String" x:Key="in_Name">
+                                      <Literal x:TypeArguments="x:String" Value="" />
+                                    </InArgument>
+                                    <InArgument x:TypeArguments="x:String" x:Key="in_Description">
+                                      <Literal x:TypeArguments="x:String" Value="" />
+                                    </InArgument>
+                                    <InArgument x:TypeArguments="x:Boolean" x:Key="in_Condition">
+                                      <Literal x:TypeArguments="x:Boolean" />
+                                    </InArgument>
+                                  </ui:InvokeWorkflowFile.Arguments>
+                                </ui:InvokeWorkflowFile>
+                              </Sequence>
+                            </ActivityAction>
+                          </ui:ForEachRow.Body>
+                        </ui:ForEachRow>
+                      </Sequence>
+                    </ui:IfElseIfBlock.Then>
+                  </ui:IfElseIfBlock>
+                  <ui:IfElseIfBlock BlockType="ElseIf" Condition="[in_Condition = &quot;Device&quot;]">
+                    <ui:IfElseIfBlock.Then>
+                      <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="476.8,431.2" sap2010:WorkflowViewState.IdRef="Sequence_25">
+                        <sap:WorkflowViewStateService.ViewState>
+                          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                          </scg:Dictionary>
+                        </sap:WorkflowViewStateService.ViewState>
+                        <ui:ForEachRow ColumnNames="{x:Null}" CurrentIndex="{x:Null}" DataTable="[in_Table]" DisplayName="For Each Row in Data Table" sap:VirtualizedContainerService.HintSize="433.6,340" sap2010:WorkflowViewState.IdRef="ForEachRow_7">
+                          <ui:ForEachRow.Body>
+                            <ActivityAction x:TypeArguments="sd:DataRow">
+                              <ActivityAction.Argument>
+                                <DelegateInArgument x:TypeArguments="sd:DataRow" Name="Row" />
+                              </ActivityAction.Argument>
+                              <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="400,214.4" sap2010:WorkflowViewState.IdRef="Sequence_27">
+                                <sap:WorkflowViewStateService.ViewState>
+                                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                    <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                  </scg:Dictionary>
+                                </sap:WorkflowViewStateService.ViewState>
+                                <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Device.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="356.8,123.2" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_9" UnSafe="False" WorkflowFileName="Device.xaml">
+                                  <ui:InvokeWorkflowFile.Arguments>
+                                    <InArgument x:TypeArguments="x:String" x:Key="in_Name">
+                                      <Literal x:TypeArguments="x:String" Value="" />
+                                    </InArgument>
+                                    <InArgument x:TypeArguments="x:String" x:Key="in_CName">
+                                      <Literal x:TypeArguments="x:String" Value="" />
+                                    </InArgument>
+                                    <InArgument x:TypeArguments="x:String" x:Key="in_ZName">
+                                      <Literal x:TypeArguments="x:String" Value="" />
+                                    </InArgument>
+                                    <InArgument x:TypeArguments="x:String" x:Key="in_Status">
+                                      <Literal x:TypeArguments="x:String" Value="" />
+                                    </InArgument>
+                                    <InArgument x:TypeArguments="x:Boolean" x:Key="in_IsActive">
+                                      <Literal x:TypeArguments="x:Boolean" />
+                                    </InArgument>
+                                    <OutArgument x:TypeArguments="x:String" x:Key="out_TestResult">
+                                      <VisualBasicReference x:TypeArguments="x:String" ExpressionText="TestResult" />
+                                    </OutArgument>
+                                    <InArgument x:TypeArguments="x:Boolean" x:Key="in_Condition">
+                                      <Literal x:TypeArguments="x:Boolean" />
+                                    </InArgument>
+                                  </ui:InvokeWorkflowFile.Arguments>
+                                </ui:InvokeWorkflowFile>
+                              </Sequence>
+                            </ActivityAction>
+                          </ui:ForEachRow.Body>
+                        </ui:ForEachRow>
+                      </Sequence>
+                    </ui:IfElseIfBlock.Then>
+                  </ui:IfElseIfBlock>
+                </sc:BindingList>
+              </ui:IfElseIf.ConditionBlocks>
+            </ui:IfElseIf>
+          </Sequence>
+        </If.Else>
+      </If>
     </Sequence>
   </Sequence>
 </Activity>
