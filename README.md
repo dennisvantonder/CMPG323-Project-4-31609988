@@ -18,4 +18,4 @@ The automation is published to Orchestrator in order to run the test from UiPath
 
 ## Reference list:
 
-- []()
+- [References.docx](https://github.com/dennisvantonder/CMPG323-Project-4-31609988/blob/main/References.docx)
