@@ -15,7 +15,7 @@ This repository contains a UiPath project that is used to run User Acceptance Te
 ## Orchestrator:
 The automation is published to Orchestrator in order to run the test from UiPath assistant or from Orchestrator itself. The process name is: Connected.Office.Web.Application.User.Acceptance.Testing. The other process is not related to this subject.
 ![image](https://user-images.githubusercontent.com/90188915/198055151-10815d4e-c008-47c9-8cc4-9d5f52d2a43c.png)
+![image](https://user-images.githubusercontent.com/90188915/198207503-cfb99cbb-8ded-4328-aa8a-41033fd5fca8.png)
 
 ## Reference list:
-
 - [References.docx](https://github.com/dennisvantonder/CMPG323-Project-4-31609988/blob/main/References.docx)
