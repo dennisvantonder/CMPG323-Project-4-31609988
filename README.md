@@ -1,4 +1,10 @@
 # Project 4 repository:
+Author: [Dennis Van Tonder](https://github.com/dennisvantonder/)
+## Subject: IT Developments
+The IT-environment changes at a fast pace. That is why we have a module with content regularly updated to keep up with newer developments in the IT-environment. The module is presented at the end of the degree to allow students to integrate their knowledge from other modules into this module. In the module, a series of projects are undertaken. Self-study and teamwork are important parts of these projects. These projects' goal is to expose the student to new IT challenges and appropriate technology to address these challenges. The development of soft skills is also part of the primary goal of this module.
+## University project:
+This project is an continuation of [Project 3](https://github.com/dennisvantonder/CMPG323-Project-3-31609988), in this project I created an automation using UiPath to perform testing on the web application created in Project 3. Mark I recieved for this project was: 102% I received extra credit.
+## Overview:
 This repository contains a UiPath project that is used to run User Acceptance Tests on the connected office web app. The UiPath project is separated into different workflows, as it much easier to test each workflow on its own. All the workflows is then combined into one in the main sequence to do all of the testing. The process can be runned from UiPath Orchestrator or from within the UiPath Studio app. The Automation will start and perform the UATs.
 
 ## Steps of the process:
