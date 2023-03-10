@@ -9,7 +9,7 @@ This repository contains a UiPath project that is used to run User Acceptance Te
 
 ## Steps of the process:
 - First the test data is read from excel into DataTables.
-- Next is login, the automation navigates to the following website: https://connectedoffice-devicemanagement.azurewebsites.net/ and logs in with the credentials.
+- Next is login, the automation navigates to the following website: https://connectedoffice-devicemanagement.azurewebsites.net/ and log in with the credentials.
 - After the login the testing is done. First on Zone then Category and lastly on Device.
 - With the testing a loop is used to loop through the specific data table, then a workflow is invoked to perform the tests on the web app.
 - The testing is done in specific order. First the item from the data table is created to test create and read, next some value is Updated by adding " - Edited" to the value to indicate a record has been updated. After all the values have been created and updated for zone, category and device the delete is tested. The delete process first tests the device then zone then category.
